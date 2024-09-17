@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Image</title>
+</head>
+
+<body>
+
+    <h2>Salis<img class="logo" src="vbjftas.svg" alt="logo"></h2> 
+    <div class="all">
+                <div class="container">
+                    <textarea required="required" class="prompt" id="prompt" rows="4" cols="50"></textarea>
+                    <span class="content conprompt ">Prompt</span>
+                </div>
+            <div class="input-row">
+                <div class="containerflx">
+                    <div class="container width">
+                        <input required="required" class="inp" type="number" id="width" value="512">
+                        <span class="content">Width</span>
+                    </div>
+
+                    <div class="container height">
+                        <input required="required" class="inp" type="number" id="height" value="512">
+                        <span class="content">Height</span>
+                    </div>
+                </div>
+                <div class="radio-input">
+                    <label>
+                        <input value="Turbo" name="model" id="value-1" type="radio" checked="">
+                        <span>Turbo</span>
+                    </label>
+                    <label>
+                        <input value="flux" name="model" id="value-2" type="radio">
+                        <span>Normal</span>
+                    </label>
+                    <label>
+                        <input value="flux-realism" name="model" id="value-3" type="radio">
+                        <span>Realism</span>
+                    </label>
+                    <label>
+                        <input value="flux-anime" name="model" id="value-4" type="radio">
+                        <span>Anime</span>
+                    </label>
+                    <label>
+                        <input value="flux-3d" name="model" id="value-5" type="radio">
+                        <span>3D</span>
+                    </label>
+                    <span class="selection"></span>
+                </div>
+            </div>
+
+            <button onclick="generateImage()">
+                <span class="circle1"></span>
+                <span class="circle2"></span>
+                <span class="circle3"></span>
+                <span class="circle4"></span>
+                <span class="circle5"></span>
+                <span class="text">Generate</span>
+            </button>
+    </div>
+            <img id="generatedImage" src="" alt="Generated Image" style="display:none;">
+
+    <script>
+        async function generateImage() {
+            const prompt = document.getElementById('prompt').value;
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+            const selectedModel = document.querySelector('input[name="model"]:checked').value;
+            const seed = Math.floor(Math.random() * 8) + 1;
+            const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=${width}&height=${height}&seed=${seed}&nofeed=true&nologo=true&model=${selectedModel}`;
+
+            try {
+                const response = await fetch(imageUrl);
+                const blob = await response.blob();
+                const imageElement = document.getElementById('generatedImage');
+                const objectURL = URL.createObjectURL(blob);
+                imageElement.src = objectURL;
+                imageElement.style.display = 'block';
+
+                centerImageHorizontally(imageElement);
+            } catch (error) {
+                console.error("Failed to fetch the image:", error);
+            }
+        }
+
+        function centerImageHorizontally(imgElement) {
+            imgElement.onload = function () {
+                const imageWidth = imgElement.offsetWidth;
+                imgElement.style.marginLeft = `calc(50% - ${imageWidth / 2}px)`;
+            }
+        }
+    </script>
+</body>
+
+</html>
