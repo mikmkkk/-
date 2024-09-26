@@ -279,7 +279,11 @@ button:hover span:not(:nth-child(6)) {
     transform: translateX(calc(var(--container_width) * 4/5 + 20px));
 }
 
-
+.foot{
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+}
 @media (max-width: 560px) {
     .all {
             margin-left: calc(50% - 160px);
