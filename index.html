@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salis-ai</title>
+    <title>Generate Image</title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
                     </label>
                     <label>
                         <input value="flux" name="model" id="value-2" type="radio">
-                        <span>Normal</span>
+                        <span>Normal</span> 
                     </label>
                     <label>
                         <input value="flux-realism" name="model" id="value-3" type="radio">
@@ -62,39 +62,9 @@
                 <span class="text">Generate</span>
             </button>
     </div>
-            <img id="generatedImage" src="" alt="Image" style="display:none;">
-    <pre class="foot">© 2024 Salis-ai - Created by <a href="https://github.com/sl-HapY">sl_HapY</a></pre>
-
-    <script>
-        async function generateImage() {
-            const prompt = document.getElementById('prompt').value;
-            const width = document.getElementById('width').value;
-            const height = document.getElementById('height').value;
-            const selectedModel = document.querySelector('input[name="model"]:checked').value;
-            const seed = Math.floor(Math.random() * 8) + 1;
-            const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=${width}&height=${height}&seed=${seed}&nofeed=true&nologo=true&model=${selectedModel}`;
-
-            try {
-                const response = await fetch(imageUrl);
-                const blob = await response.blob();
-                const imageElement = document.getElementById('generatedImage');
-                const objectURL = URL.createObjectURL(blob);
-                imageElement.src = objectURL;
-                imageElement.style.display = 'block';
-
-                centerImageHorizontally(imageElement);
-            } catch (error) {
-                console.error("Failed to fetch the image:", error);
-            }
-        }
-
-        function centerImageHorizontally(imgElement) {
-            imgElement.onload = function () {
-                const imageWidth = imgElement.offsetWidth;
-                imgElement.style.marginLeft = `calc(50% - ${imageWidth / 2}px)`;
-            }
-        }
-    </script>
+            <img id="generatedImage" src="" alt="Generated Image" style="display:none;">
+            <pre class="foot">© 2024 OFile - Created by <a href="https://github.com/sl-HapY" style="color: #0dcaf0;">sl_HapY</a></pre>
+    <script src="app.js"></script>
 </body>
 
 </html>

@@ -20,6 +20,8 @@ body{
     border: #0dcaf0 solid 1px;
     max-width: 90%;
     max-height: 570px;
+    display: flex;
+    justify-content: center;
 }
 
 h2{
@@ -279,11 +281,12 @@ button:hover span:not(:nth-child(6)) {
     transform: translateX(calc(var(--container_width) * 4/5 + 20px));
 }
 
-.foot{
+.foot {
     font-size: 13px;
     display: flex;
     justify-content: center;
-    colot: #dddddd;
+    color: #dddddd;
+
 }
 
 @media (max-width: 560px) {
@@ -348,12 +351,14 @@ button:hover span:not(:nth-child(6)) {
     width: 320px;
     }
 
+
 #generatedImage {
     max-height: 370px;
 }
 
-    .input-row {
-        display:unset;
-        gap: 6px;
-    }
+.input-row {
+    display:unset;
+    gap: 6px;
+}
+
 }
