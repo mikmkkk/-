@@ -283,7 +283,9 @@ button:hover span:not(:nth-child(6)) {
     font-size: 13px;
     display: flex;
     justify-content: center;
+    colot: #dddddd;
 }
+
 @media (max-width: 560px) {
     .all {
             margin-left: calc(50% - 160px);
