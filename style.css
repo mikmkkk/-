@@ -5,9 +5,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     background-color: #212529;
-    }
+}
 
 
 .all {
@@ -21,17 +21,18 @@ body{
     max-width: 90%;
     max-height: 570px;
     display: flex;
-    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-h2{
+h2 {
     color: #0dcaf0;
     display: flex;
     align-items: center;
 
 }
 
-.logo{
+.logo {
     height: 30px;
     margin-left: 9px;
 }
@@ -52,7 +53,7 @@ button {
     width: 552px;
 }
 
-button:hover{
+button:hover {
     color: #212529
 }
 
@@ -96,7 +97,7 @@ button:hover span:not(:nth-child(6)) {
     transform: translate(-50%, -50%) scale(4);
     transition: 1.5s ease;
     background-color: #0dcaf0;
-    
+
 }
 
 .container {
@@ -104,7 +105,7 @@ button:hover span:not(:nth-child(6)) {
     width: 250px;
 }
 
-.containerflx{
+.containerflx {
     display: flex;
 }
 
@@ -115,6 +116,7 @@ button:hover span:not(:nth-child(6)) {
 .height {
     margin-left: -118px;
 }
+
 .container .inp {
     width: 40%;
     padding: 10px;
@@ -127,7 +129,7 @@ button:hover span:not(:nth-child(6)) {
     font-size: 1em;
 }
 
-.container .prompt{
+.container .prompt {
     width: 552px;
     height: 100px;
     padding: 10px;
@@ -152,7 +154,7 @@ button:hover span:not(:nth-child(6)) {
     transition: 0.5s;
 }
 
-.container .conprompt  {
+.container .conprompt {
     position: absolute;
     left: 1px;
     top: 10px;
@@ -185,7 +187,7 @@ button:hover span:not(:nth-child(6)) {
     background: #292929;
     border-left: 2px solid #0dcaf0;
     border-right: 2px solid #0dcaf0;
-    
+
 }
 
 
@@ -195,8 +197,8 @@ button:hover span:not(:nth-child(6)) {
     --font-color-light: #dddddd;
     --bg-color: #292929;
     --main-color: #0dcaf0;
-    --secondary-color: #20caec9c ;
-    position: relative; 
+    --secondary-color: #20caec9c;
+    position: relative;
     margin-top: 14px;
     margin-bottom: 14px;
     width: 350px;
@@ -226,7 +228,7 @@ button:hover span:not(:nth-child(6)) {
     overflow: hidden;
     border: 1.6px solid #0dcaf0;
     margin-top: 20px;
-    margin-left: -130px ;
+    margin-left: -130px;
 }
 
 .radio-input label {
@@ -277,6 +279,7 @@ button:hover span:not(:nth-child(6)) {
 .radio-input label:nth-child(4):has(input:checked)~.selection {
     transform: translateX(calc(var(--container_width) * 3/5 + 15px));
 }
+
 .radio-input label:nth-child(5):has(input:checked)~.selection {
     transform: translateX(calc(var(--container_width) * 4/5 + 20px));
 }
@@ -291,30 +294,31 @@ button:hover span:not(:nth-child(6)) {
 
 @media (max-width: 560px) {
     .all {
-            margin-left: calc(50% - 160px);
+        margin-left: calc(50% - 160px);
     }
 
-    .container .prompt{
+    .container .prompt {
         width: 320px;
     }
 
-    .containerflx{
+    .containerflx {
         padding-right: 0px;
         margin-right: -100%;
     }
 
-    .height{
+    .height {
         margin-left: -2.5%;
     }
+
     .width .inp {
         width: 86px;
         padding: 10px;
-    }    
+    }
 
     .height .inp {
         width: 90px;
         padding: 10px;
-        
+
     }
 
     .container .content {
@@ -322,6 +326,7 @@ button:hover span:not(:nth-child(6)) {
         margin-top: 20px;
         padding: 10px;
     }
+
     .radio-input {
         width: 320px;
         margin: 20px 0 0 0;
@@ -348,17 +353,17 @@ button:hover span:not(:nth-child(6)) {
     }
 
     button {
-    width: 320px;
+        width: 320px;
     }
 
 
-#generatedImage {
-    max-height: 370px;
-}
+    #generatedImage {
+        max-height: 370px;
+    }
 
-.input-row {
-    display:unset;
-    gap: 6px;
-}
+    .input-row {
+        display: unset;
+        gap: 6px;
+    }
 
 }
