@@ -62,7 +62,6 @@ body {
 
 .radio-inputs .radio .name {
     display: flex;
-    cursor: pointer;
     align-items: center;
     justify-content: center;
     border-radius: 25px ;
