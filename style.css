@@ -6,15 +6,18 @@
 }
 
 body {
-    background-color:#1a1a1a;
+    background-color: #1a1a1a;
     height: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0;
+    padding-bottom: 50px;
+    box-sizing: border-box;
 }
 
-.all{
+.all {
 
     display: flex;
     flex-direction: column;
@@ -27,14 +30,15 @@ body {
     padding-left: 8px;
     padding-right: 8px;
     border: #E0E3E6 2px solid;
-    border-radius: 25px ;
+    border-radius: 25px;
     margin-bottom: -16px;
 
 }
+
 .title {
 
-    color :#E0E3E6;
-    display:flex;
+    color: #E0E3E6;
+    display: flex;
     flex-direction: column;
     align-items: center;
 
@@ -64,10 +68,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 25px ;
+    border-radius: 25px;
     border: none;
     padding: .5rem 0;
-    color: #E0E3E6 ;
+    color: #E0E3E6;
     transition: all .15s ease-in-out;
 }
 
@@ -78,7 +82,7 @@ body {
     scale: 1.06;
 }
 
-.inputrow{
+.inputrow {
     display: flex;
     flex-wrap: wrap;
     padding-top: 20px;
@@ -96,9 +100,9 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-.inp{
+.inp {
     border: none;
-    width:75px;
+    width: 75px;
     height: 30px;
     background-color: #282828;
     border-radius: 70px;
@@ -111,13 +115,13 @@ input[type="number"] {
     padding-left: 20px;
 }
 
-.inp:focus{
+.inp:focus {
     outline: none;
     border: #E0E3E6 2px solid;
     scale: 1.04;
 }
 
-.width{
+.width {
     background-color: #282828;
     border-radius: 70px;
     padding-left: 12px;
@@ -133,7 +137,7 @@ input[type="number"] {
 
 .forokon {
     border: none;
-    margin-top: 36px;
+    margin-top: 33px;
     border-radius: 25px;
     width: 500px;
     background-color: #262626;
@@ -156,7 +160,7 @@ input[type="number"] {
 
 .button {
     position: relative;
-    background-color: #727c97;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
     color: #E0E3E6;
     font-size: 17px;
     font-weight: 600;
@@ -167,7 +171,7 @@ input[type="number"] {
     cursor: pointer;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.0, 1, 0.0, 1);
-    margin-top: 13px;
+    margin-top: 19px;
 }
 
 .button:active {
@@ -182,15 +186,62 @@ input[type="number"] {
     display: flex;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 20px;
+    margin-top: 25px;
+    display: none;
 }
+
+
 
 .foot {
     font-size: 13px;
     display: flex;
     justify-content: center;
+    align-items: center;
     color: #dddddd;
-    padding-top: 70%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    height: 50px;
+
 }
+
+.loader {
+    display : none;
+    margin-top: 60px;
+    width: 230px;
+    height: 230px;
+    border-radius: 30px;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+    animation: spin 3s infinite;
+}
+
+.loader::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(70px);
+}
+@keyframes spin {
+    0% {
+        transform: rotate(-45deg);
+    }
+
+    50% {
+        transform: rotate(-360deg);
+        border-radius: 50%;
+    }
+
+    100% {
+        transform: rotate(-45deg);
+    }
+}
+
 @media (max-width: 560px) {
 
     .forokon {
