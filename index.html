@@ -9,7 +9,48 @@
 </head>
 
 <body>
-    
-    <p styles="color : #ffffff;">Goodbye this site will no longer be online</p>
+    <div class="all">
+        <div class="title">
+            <p class="title" id="kocholo">Dev Preview</p>
+            <h1 class="title">Salis Studio</h1>
+            <div class="radio-inputs">
+                <label class="radio">
+                    <input type="radio" name="radio" value="flux">
+                    <span class="name">Normal</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" name="radio" value="flux" checked>
+                    <span class="name">Turbo</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" name="radio" value="flux-pro">
+                    <span class="name">Pro</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" name="radio" value="flux-cablyai">
+                    <span class="name">Ultra</span>
+                </label>
+            </div>
+            <div class="inputrow">
+                <div class="container width">
+                    <span class="content">Width:</span>
+                    <input required class="inp" type="number" id="width" value="1080" min="150" max="1920">
+                </div>
+                <div class="container height">
+                    <span class="content">Height:</span>
+                    <input required class="inp" type="number" id="height" value="1080" min="150" max="1920">
+                </div>
+            </div>
+            <div>
+                <textarea class="forokon" id="promptText" placeholder="Enter your prompt here..."></textarea>
+            </div>
+            <button class="button" onclick="generateImage()">Generate</button>
+            <div class="loader"></div>
+            <img class="imag" id="generatedImage" src="" alt="Generated Image" onerror="this.src='error.png';">
+            <pre
+                class="foot"> © 2024 Salist™ - Created by <a href="https://github.com/sl-HapY" style="color: #0dcaf0;">sl_HapY</a></pre>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
