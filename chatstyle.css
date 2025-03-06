@@ -8,8 +8,8 @@
             --input-bg: #262626;
             --button-bg: #343541;
             --button-hover: #262626;
-            --accent-color: #00dbde;
-            --accent-hover: #00dbde;
+            --accent-color: #e0e3e6;
+            --accent-hover: #e0e3e6;
             --dropdown-bg: #343541;
             --dropdown-hover: #40414f;
             --success-color: #19c37d;
@@ -108,6 +108,10 @@
             flex-direction: column;
             background-color: var(--primary-bg);
             position: relative;
+            height: 100vh;
+            /* Ensure it takes full viewport height */
+            overflow: hidden;
+            /* Prevent scrolling at this level */
         }
 
         #modelSelectContainer {
@@ -134,7 +138,8 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            padding-bottom: 10px;
+            padding-bottom: 80px;
+            /* Add more padding at the bottom to ensure messages aren't hidden behind input */
         }
 
         .message-container {
@@ -172,8 +177,6 @@
             flex-shrink: 0;
             color: var(--text-color);
         }
-
-        .ai .avatar {}
 
         .message {
             flex: 1;
@@ -308,6 +311,8 @@
             color: var(--text-color);
             cursor: pointer;
             display: none;
+            transition: display 0.3s ease;
+            /* Add smooth transition */
         }
 
 
@@ -329,26 +334,40 @@
         }
         @media (max-width: 768px) {
 
-            #toggleSidebar {
-                display: block;
-                position: static;
-                margin: 10px;
-            }
 
             #modelSelectContainer {
                 display: flex;
                 align-items: center;
                 gap: 10px;
+                padding-left: 45px;
+                /* Add space for the toggle button */
             }
+        
+            /* Ensure content fills the screen on mobile */
+            .container {
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+            }
+        
+            /* Adjust the last message margin to prevent it from being hidden */
+            .message-container.ai:last-child {
+                margin-bottom: 120px;
+            }
+
+            #toggleSidebar {
+                display: block;
+                position: static;
+                margin: 10px;
+                background-color: var(--input-bg);
+            }
+
 
             #modelSelect {
                 flex: 1;
                 min-width: 0;
             }
 
-            #toggleSidebar {
-                display: block;
-            }
 
             #sidebar {
                 position: fixed;
@@ -369,7 +388,16 @@
             }
 
             #inputContainer {
-                padding: 12px;
+                padding: 16px;
+                position: fixed;
+                /* Change to fixed positioning */
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-bg);
+                border-top: 1px solid var(--border-color);
+                z-index: 5;
+                /* Ensure it stays above content */
             }
 
             .footer {
