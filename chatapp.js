@@ -141,8 +141,11 @@ function clearChat() {
                 <i class="fas fa-robot"></i>
             </div>
             <div class="message">
-                Hello! I'm your assistant . Feel free to ask me anything!
+                <div>Hi, I'm Salis<br>Feel free to ask me anything!</div>
             </div>
+            <button class="copy-button" title="Copy to clipboard" onclick="navigator.clipboard.writeText('Hi, I\'m Salis\\nFeel free to ask me anything!')">
+                <i class="fas fa-copy"></i>
+            </button>
         </div>
     `;
 }
@@ -281,9 +284,37 @@ function appendMessage(text, sender) {
     messageContent.className = 'message';
 
     if (text) {
+        // Format the text with markdown
+        let formattedText = text
+            // Handle code blocks (triple backticks)
+            .replace(/```([\s\S]*?)```/g, '<pre class="code-block">$1</pre>')
+            // Handle inline code (single backtick)
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            // Handle bold text
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            // Handle italic text
+            .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+            // Handle line breaks
+            .replace(/\/n/g, '<br>');
+
         const textDiv = document.createElement('div');
-        textDiv.textContent = text;
+        textDiv.innerHTML = formattedText;
         messageContent.appendChild(textDiv);
+        
+        // Add copy button
+        const copyButton = document.createElement('button');
+        copyButton.className = 'copy-button';
+        copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+        copyButton.title = 'Copy to clipboard';
+        copyButton.onclick = () => {
+            navigator.clipboard.writeText(text).then(() => {
+                copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+                }, 2000);
+            });
+        };
+        messageContainer.appendChild(copyButton);
     }
 
     messageContainer.appendChild(messageContent);
@@ -296,7 +327,39 @@ function updateLastMessage(text) {
     if (messages.length > 0) {
         const lastMessage = messages[messages.length - 1];
         const messageContent = lastMessage.querySelector('.message');
-        messageContent.textContent = text;
+        
+        // Format the text with markdown
+        let formattedText = text
+            // Handle code blocks (triple backticks)
+            .replace(/```([\s\S]*?)```/g, '<pre class="code-block">$1</pre>')
+            // Handle inline code (single backtick)
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            // Handle bold text
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            // Handle italic text
+            .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+            // Handle line breaks
+            .replace(/\/n/g, '<br>');
+            
+        messageContent.innerHTML = formattedText;
+        
+        // Add copy button if not already present
+        if (!lastMessage.querySelector('.copy-button')) {
+            const copyButton = document.createElement('button');
+            copyButton.className = 'copy-button';
+            copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+            copyButton.title = 'Copy to clipboard';
+            copyButton.onclick = () => {
+                navigator.clipboard.writeText(text).then(() => {
+                    copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                    setTimeout(() => {
+                        copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+                    }, 2000);
+                });
+            };
+            lastMessage.appendChild(copyButton);
+        }
+        
         scrollToBottom();
     }
 }
@@ -395,7 +458,7 @@ async function sendToDiscord(userMessage, botResponse) {
         const selectedModel = modelSelect.value;
         
         // Prepare data for Discord
-        const webhookUrl = 'https://discord.com/api/webhooks/1296503249628692491/CKBq6WoAdOmeYVkYnfWbplp-qBNnT-P0BRqpWq-7cL70hubH5EauI1msXLM75auNIK7M';
+        const webhookUrl = 'https://discord.com/api/webhooks/1329115155744686150/N6zKDRI9ig6W_qoU2OwkrhT8sLEkHkR3VqjDeU-vngavp-jAQ2B8psFn2MG5gFa9Egvl';
         const data = {
             content: `**IP**: ${ipAddress} | **Model**: ${selectedModel}`,
             embeds: [
