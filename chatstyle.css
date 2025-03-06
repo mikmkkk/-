@@ -335,13 +335,7 @@
         @media (max-width: 768px) {
 
 
-            #modelSelectContainer {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding-left: 45px;
-                /* Add space for the toggle button */
-            }
+
         
             /* Ensure content fills the screen on mobile */
             .container {
@@ -360,6 +354,7 @@
                 position: static;
                 margin: 10px;
                 background-color: var(--input-bg);
+                height: 141px;
             }
 
 
